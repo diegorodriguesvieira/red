@@ -74,7 +74,7 @@ comment ^{
 ]
 
 ;;--------------- Main Processing
-
+all-files: []
 file-out: %auto-tests/run-all-comp1.red
 write-test-header file-out
 write/append file-out {~~~start-file~~~ "run-all-comp1"^/} 
@@ -82,7 +82,9 @@ i: 0
 foreach file file-list-comp [
 	i: i + 1
 	if odd? i [
-		write/append file-out rejoin ["#include %" move-file file lf]
+		f: rejoin ["#include %" move-file file lf]
+		append all-files f
+		write/append file-out f
 	]	
 ]
 write/append file-out {~~~end-file~~~^/} 
@@ -94,10 +96,18 @@ i: 0
 foreach file file-list-comp [
 	i: i + 1
 	if even? i [
-		write/append file-out rejoin ["#include %" move-file file lf]
+		f: rejoin ["#include %" move-file file lf]
+		append all-files f
+		write/append file-out f
 	]	
 ]
 write/append file-out {~~~end-file~~~^/} 
+
+file-out: %auto-tests/run-all-comp.red
+write-test-header file-out
+write/append file-out {~~~start-file~~~ "run-all-comp"^/} 
+write/append file-out all-files
+write/append file-out {~~~end-file~~~^/}
 
 file-out: %auto-tests/run-all-interp.red
 write-test-header file-out

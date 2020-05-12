@@ -45,6 +45,7 @@ do %source/units/run-pre-extra-tests.r
         --run-test-file-quiet %source/units/auto-tests/run-all-comp1.red
         --run-test-file-quiet %source/units/auto-tests/run-all-comp2.red
         --run-test-file-quiet %source/units/auto-tests/run-all-interp.red
+        --run-test-file-quiet %source/units/auto-tests/run-all-comp.red
     ]
 ===end-group===
 do %source/units/run-post-extra-tests.r
